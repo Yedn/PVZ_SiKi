@@ -8,10 +8,18 @@ enum CardState
     Ready
 }
 
+public enum PlantType
+{
+    Sunflower,
+    PeaShooter
+}
 public class Card : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private CardState cardState = CardState.Cooling;
+    public PlantType plantType = PlantType.Sunflower;
+    
+
     public GameObject cardLight;
     public GameObject cardGray;
     public Image cardMask;
@@ -21,12 +29,9 @@ public class Card : MonoBehaviour
 
     [SerializeField]
     private int needSunPoint = 50;
-    //3 state:
-    void Start()
-    {
-        
-    }
 
+    
+    //3 state:
     // Update is called once per frame
     private void Update()
     {
@@ -102,12 +107,15 @@ public class Card : MonoBehaviour
         {
             return;
         }
-        //TODO: ÖÖÖ²
+        
+        bool isSuccess = HandManager.instance.AddPlantInHead(plantType);
+        if (isSuccess) 
+        {
+            //-testing code-
+            SunManager.Instance.SubSun(needSunPoint);
+            //-----end------
+            TranslateToCooling();
+        }
 
-        //-testing code-
-        SunManager.Instance.SubSun(needSunPoint);
-        //-----end------
-
-        TranslateToCooling();
     }
 }
