@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Net;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -27,7 +28,7 @@ public class HandManager : MonoBehaviour
         Plant plantPrefab = GetPlantPrefab(plantType);
         if (plantPrefab == null)
         {
-            Debug.Log("没有这个植物");
+            
             return false;
         }
         currentPlant = GameObject.Instantiate(plantPrefab);
@@ -52,5 +53,19 @@ public class HandManager : MonoBehaviour
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = 0;
         currentPlant.transform.position = mouseWorldPosition;
+    }
+
+    public void OnCellClick(Cell cell)
+    {
+        if (currentPlant ==  null) 
+        {
+            return; 
+        }
+        bool isSuccess =  cell.AddPlant(currentPlant);
+        if (isSuccess)
+        {
+            currentPlant = null;
+        }
+
     }
 }
