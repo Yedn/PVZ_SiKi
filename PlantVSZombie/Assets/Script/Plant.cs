@@ -49,8 +49,8 @@ public class Plant : MonoBehaviour
         GetComponent<Animator>().enabled = true;
     }
 
-    public void BurnSun()
+    public void ProduceSun()
     {
-
+        Debug.Log("Born Sun");  
     }
 }
