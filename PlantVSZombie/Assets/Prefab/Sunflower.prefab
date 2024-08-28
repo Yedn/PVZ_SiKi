@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6841844124182221030}
   - component: {fileID: 3254950503786380495}
   - component: {fileID: 2159677804927318652}
-  - component: {fileID: 1541520486664556240}
+  - component: {fileID: 1531890252506171302}
   m_Layer: 0
   m_Name: Sunflower
   m_TagString: Untagged
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 020960385ebb5014db0fa7ac7469483b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -111,7 +111,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1541520486664556240
+--- !u!114 &1531890252506171302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,7 +120,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4536435040057718304}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 571d629a44c5cef488f21fdcc4dda082, type: 3}
+  m_Script: {fileID: 11500000, guid: 962ceb25159da9d46b425eb7167e1c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   plantType: 0
+  productDuration: 5
+  anim: {fileID: 2159677804927318652}
