@@ -18,6 +18,12 @@ public class SunManager : MonoBehaviour
 
     public TextMeshProUGUI sunPointText;
     private Vector3 sunPointTextPosition;
+
+    [Header("Naturally produce sun")]
+    public float produceTime = 10.0f;
+    private float produceTimer = 0.0f;
+    public GameObject SunPrefab;
+    private bool isStartProduct = false;
     private void Awake()
     {
         Instance = this;
@@ -26,6 +32,22 @@ public class SunManager : MonoBehaviour
     {
         UpdateSunPointText();
         CalcSunPointTextPosition();
+
+        //testCode
+        StartProduct();
+    }
+    private void Update()
+    {
+        if (isStartProduct) 
+        {
+            ProduceSun();
+        }
+        
+    }
+
+    public void StartProduct()
+    {
+        isStartProduct = true;
     }
 
     public void UpdateSunPointText()
@@ -54,4 +76,17 @@ public class SunManager : MonoBehaviour
         position.z = 0;
         sunPointTextPosition = position;
     }
+    void ProduceSun()
+    {
+        produceTimer += Time.deltaTime;
+        if (produceTimer >= produceTime)
+        {
+            produceTimer = 0.0f;
+            Vector3 position = new Vector3(Random.Range(-4, 6.2f), 6.1f, -1);
+            GameObject go = GameObject.Instantiate(SunPrefab, position, Quaternion.identity);
+            position.y = Random.Range(-3.8f, 2.8f);
+            go.GetComponent<Sun>().LinearTo(position);
+        }
+    }
+
 }

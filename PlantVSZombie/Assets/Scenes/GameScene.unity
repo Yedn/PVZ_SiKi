@@ -2744,6 +2744,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sunPoint: 300
   sunPointText: {fileID: 744394230}
+  produceTime: 10
+  SunPrefab: {fileID: 6362820499667000881, guid: 90bfed0bb60b2504394b3332085835c3, type: 3}
 --- !u!4 &1192447723
 Transform:
   m_ObjectHideFlags: 0

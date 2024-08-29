@@ -6,6 +6,7 @@ public class Sun : MonoBehaviour
 {
     public float moveDuration =1.0f;
     public int point = 25;
+
     public void JumpTo(Vector3 targetPos)
     {
         targetPos.z = -1;
@@ -20,6 +21,11 @@ public class Sun : MonoBehaviour
         //()=> 回调函数
         //链式调用
         transform.DOMove(SunManager.Instance.GetSunPointTextPosition(), moveDuration).SetEase(Ease.OutQuad).OnComplete(() => { Destroy(this.gameObject); SunManager.Instance.AddSun(point); });
+    }
+
+    public void LinearTo(Vector3 targetPos)
+    {
+        transform.DOMove(targetPos, moveDuration);
     }
 }
  
