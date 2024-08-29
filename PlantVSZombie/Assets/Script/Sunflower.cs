@@ -4,7 +4,7 @@ using UnityEngine;
 public class Sunflower : Plant
 {
     [Header("Produce Sun Timer")]
-    public float productDuration = 5.0f;
+    public float productDuration = 7.0f;
     private float productTime = 0.0f;
 
     [Header("Produce Sun")]
