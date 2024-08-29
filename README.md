@@ -6,4 +6,4 @@
 - (https://blog.csdn.net/LLLLL__/article/details/88187367)[Unity中的MonoBehaviour及生命周期]
 
 ## TODO
-- 控制阳光的抛物线生成
+- 豌豆射手
