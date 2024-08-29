@@ -13,7 +13,7 @@ public class Sunflower : Plant
 
     [Header("Sun Jump Offset Distance")]
     public float JumpMinDistance = 0.3f;
-    public float JumpMaxDistance = 1.5f;
+    public float JumpMaxDistance = 1.0f;
 
     private void Awake()
     {
