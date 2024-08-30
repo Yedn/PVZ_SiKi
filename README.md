@@ -7,4 +7,4 @@
 - (https://blog.csdn.net/lalate/article/details/131641612)[DoTween插件安装与使用]
 
 ## TODO
-- 豌豆射手
+- 僵尸的受伤处理
