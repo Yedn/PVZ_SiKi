@@ -8,3 +8,6 @@
 
 ## TODO
 - 僵尸的受伤处理
+
+## Git Learning Game
+- (https://learngitbranching.js.org/?locale=zh_CN)[Git使用学习]
