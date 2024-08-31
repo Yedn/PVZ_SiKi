@@ -8,7 +8,7 @@
 - (https://blog.csdn.net/weixin_49427945/article/details/139459771)[Unity中协程Coroutine简单易懂详解]
 
 ## TODO
-- 僵尸的受伤处理
+- CardList的禁用和启用
 
 ## Git Learning Game
 - (https://learngitbranching.js.org/?locale=zh_CN)[Git使用学习]
