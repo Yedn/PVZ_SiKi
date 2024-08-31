@@ -126,6 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  Hp: 100
+  zombieHeadPrefab: {fileID: 5907878450810931800, guid: af23edf3cbdbeca47bd2c81c6fb568ed, type: 3}
   atkValue: 20
   atkDuration: 2
   atkTimer: 0
