@@ -14,6 +14,8 @@ public class Zombie : MonoBehaviour
     private Animator anim;
     public int Hp = 100;
     private int currentHp;
+    public GameObject zombieHeadPrefab;
+    private bool haveHead = true;
 
     [Header("EatPlant")]
     public int atkValue=25;
@@ -102,7 +104,15 @@ public class Zombie : MonoBehaviour
             Dead();
         }
         float hpPercent = (currentHp * 1.0f) / Hp;
+        
         anim.SetFloat("HpPercent", hpPercent);
+        if (hpPercent < 0.5f && haveHead == true)
+        {
+            GameObject go = GameObject.Instantiate(zombieHeadPrefab, transform.position, Quaternion.identity);
+            Destroy(go, 2.0f);
+            haveHead = false;
+        }
+
     }
     private void Dead()
     {
