@@ -5,6 +5,7 @@ public class Peashooter : Plant
     public float shootDuration = 2.0f;
     private float shootTime = 0.0f;
     public Transform shootPointTransform;
+    public int atkValue = 25;
 
     public PeaBullet peaBulletPrefab;
     public float bulletSpeed=3.0f;
@@ -22,5 +23,6 @@ public class Peashooter : Plant
     {
         PeaBullet pb = GameObject.Instantiate(peaBulletPrefab,shootPointTransform.position,Quaternion.identity);
         pb.SetSpeed(bulletSpeed);
+        pb.SetAtkValue(atkValue);
     }
 }

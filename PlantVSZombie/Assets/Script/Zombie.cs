@@ -12,6 +12,8 @@ public class Zombie : MonoBehaviour
     public float moveSpeed = 1.0f;
     ZombieState zombieState = ZombieState.Move;
     private Animator anim;
+    public int Hp = 100;
+    private int currentHp;
 
     [Header("EatPlant")]
     public int atkValue=25;
@@ -24,6 +26,7 @@ public class Zombie : MonoBehaviour
     {
         rgd = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        currentHp = Hp;
     }
 
     // Update is called once per frame
@@ -84,5 +87,27 @@ public class Zombie : MonoBehaviour
     {
         zombieState = ZombieState.Eat;
         atkTimer = 0.0f;
+    }
+
+    public void TakeDamage(int Damage)
+    {
+        if (currentHp <= 0 )
+        {
+            return;
+        }
+        this.currentHp -= Damage;
+        if (currentHp <= 0)
+        {
+            currentHp = -1;
+            Dead();
+        }
+        float hpPercent = (currentHp * 1.0f) / Hp;
+        anim.SetFloat("HpPercent", hpPercent);
+    }
+    private void Dead()
+    {
+        zombieState = ZombieState.Die;
+        GetComponent<Collider2D>().enabled = false;
+        Destroy(this.gameObject,2.0f);
     }
 }
