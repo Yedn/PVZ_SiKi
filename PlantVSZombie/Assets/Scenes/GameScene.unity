@@ -4388,17 +4388,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 433129420294275320, guid: bf116c6ef74cbf24182e735f4de4b264, type: 3}
+      propertyPath: zombieHeadPrefab
+      value: 
+      objectReference: {fileID: 5907878450810931800, guid: af23edf3cbdbeca47bd2c81c6fb568ed, type: 3}
     - target: {fileID: 2980423353503673465, guid: bf116c6ef74cbf24182e735f4de4b264, type: 3}
       propertyPath: m_Name
       value: Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 7930111592924695210, guid: bf116c6ef74cbf24182e735f4de4b264, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.21
+      value: 5.73
       objectReference: {fileID: 0}
     - target: {fileID: 7930111592924695210, guid: bf116c6ef74cbf24182e735f4de4b264, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.54
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 7930111592924695210, guid: bf116c6ef74cbf24182e735f4de4b264, type: 3}
       propertyPath: m_LocalPosition.z
