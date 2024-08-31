@@ -6,6 +6,7 @@ public class PeaBullet : MonoBehaviour
     [Header("Attack")]
     private int atkValue = 25;
     private float speed = 3.0f;
+    public GameObject peaBulletHitPrefab;
 
     public void Start()
     {
@@ -31,6 +32,8 @@ public class PeaBullet : MonoBehaviour
         {
             Destroy(this.gameObject);
             collision.GetComponent<Zombie>().TakeDamage(atkValue);
+            GameObject go = GameObject.Instantiate(peaBulletHitPrefab,transform.position,Quaternion.identity);
+            Destroy(go,1.0f);
         }
     }
 }
