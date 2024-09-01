@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public PrepareUI prepareUI;
     public CardListUI cardListUI;
 
+    private bool isGameEnd = false;
+
     private void Awake()
     {
         instance = this;
@@ -21,7 +23,19 @@ public class GameManager : MonoBehaviour
         Vector3 currentPosition=Camera.main.transform.position;
         Camera.main.transform.DOPath(new Vector3[] {currentPosition,new Vector3(5,0,-10),currentPosition},4.0f,PathType.Linear).OnComplete(ShowPrepareUI);
     }
+    public void GameEndFail()
+    {
+        if (!isGameEnd)
+        {
+            isGameEnd = true;
 
+        }
+        else
+        {
+            return;
+        }
+        
+    }
     void ShowPrepareUI()
     {
         prepareUI.Show(OnPrepareUIComplete);

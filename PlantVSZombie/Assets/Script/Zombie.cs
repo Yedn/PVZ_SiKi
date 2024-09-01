@@ -72,7 +72,10 @@ public class Zombie : MonoBehaviour
             TransitionToEat();
             currentEatPlant = collision.GetComponent<Plant>();
         }
-
+        else if (collision.tag == "House")
+        {
+            GameManager.instance.GameEndFail();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
