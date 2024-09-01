@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 enum CardState
 {
+    Disable,
     Cooling,
     WaitingSun,
     Ready
@@ -16,7 +17,7 @@ public enum PlantType
 public class Card : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private CardState cardState = CardState.Cooling;
+    private CardState cardState = CardState.Disable;
     public PlantType plantType = PlantType.Sunflower;
     
 
@@ -101,6 +102,16 @@ public class Card : MonoBehaviour
         coolTimer = 0.0f;
     }
 
+    public void DisableCard()
+    {
+        cardState = CardState.Disable;
+    }
+
+    public void EnableCard()
+    {
+        TranslateToCooling();
+    }
+
     public void OnClick()
     {
         if (needSunPoint > SunManager.Instance.SunPoint)
@@ -116,6 +127,5 @@ public class Card : MonoBehaviour
             //-----end------
             TranslateToCooling();
         }
-
     }
 }
