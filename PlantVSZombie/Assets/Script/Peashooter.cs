@@ -21,6 +21,7 @@ public class Peashooter : Plant
 
     void shoot()
     {
+        AudioManager.instance.PlayClip(Config.shoot);
         PeaBullet pb = GameObject.Instantiate(peaBulletPrefab,shootPointTransform.position,Quaternion.identity);
         pb.SetSpeed(bulletSpeed);
         pb.SetAtkValue(atkValue);

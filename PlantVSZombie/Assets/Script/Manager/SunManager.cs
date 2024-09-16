@@ -49,6 +49,11 @@ public class SunManager : MonoBehaviour
     {
         isStartProduct = true;
     }
+    
+    public void StopProduct()
+    {
+        isStartProduct = false;
+    }
 
     public void UpdateSunPointText()
     {

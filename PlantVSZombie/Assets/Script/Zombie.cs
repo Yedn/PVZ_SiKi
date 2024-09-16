@@ -1,8 +1,9 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 enum ZombieState
 {
-    Move,Eat,Die
+    Move, Eat, Die, Pause
 }
 
 
@@ -17,8 +18,10 @@ public class Zombie : MonoBehaviour
     public GameObject zombieHeadPrefab;
     private bool haveHead = true;
 
+    
+
     [Header("EatPlant")]
-    public int atkValue=25;
+    public int atkValue = 25;
     public float atkDuration = 2.0f;
     public float atkTimer = 0;
     private Plant currentEatPlant;
@@ -45,10 +48,15 @@ public class Zombie : MonoBehaviour
             case ZombieState.Die:
                 break;
         }
-
-
-        
     }
+
+    public void TransitionToPause()
+    {
+        zombieState = ZombieState.Pause;
+        anim.enabled = false;
+        //rgd.bodyType = RigidbodyType2D.Static;
+    }
+
     private void MoveUpdate()
     {
         rgd.MovePosition(rgd.position + Vector2.left * moveSpeed * Time.deltaTime);
@@ -57,8 +65,9 @@ public class Zombie : MonoBehaviour
     private void EatUpdate()
     {
         atkTimer += Time.deltaTime;
-        if (atkTimer>atkDuration && currentEatPlant != null)
+        if (atkTimer > atkDuration && currentEatPlant != null)
         {
+            
             currentEatPlant.TakeDamage(atkValue);
             atkTimer = 0;
         }
@@ -66,26 +75,33 @@ public class Zombie : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Plant")
+        if (zombieState == ZombieState.Move)
         {
-            anim.SetBool("IsEating", true);
-            TransitionToEat();
-            currentEatPlant = collision.GetComponent<Plant>();
-        }
-        else if (collision.tag == "House")
-        {
-            GameManager.instance.GameEndFail();
+            if (collision.tag == "Plant")
+            {
+                AudioManager.instance.PlayClip(Config.eat);
+                anim.SetBool("IsEating", true);
+                TransitionToEat();
+                currentEatPlant = collision.GetComponent<Plant>();
+            }
+            else if (collision.tag == "House")
+            {
+                GameManager.instance.GameEndFail();
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Plant")
+        if (zombieState == ZombieState.Eat)
         {
-            anim.SetBool("IsEating", false);
-            zombieState = ZombieState.Move;
-            currentEatPlant = null;
-        } 
+            if (collision.tag == "Plant")
+            {
+                anim.SetBool("IsEating", false);
+                zombieState = ZombieState.Move;
+                currentEatPlant = null;
+            }
+        }
     }
 
     void TransitionToEat()
@@ -96,7 +112,7 @@ public class Zombie : MonoBehaviour
 
     public void TakeDamage(int Damage)
     {
-        if (currentHp <= 0 )
+        if (currentHp <= 0)
         {
             return;
         }
@@ -107,7 +123,7 @@ public class Zombie : MonoBehaviour
             Dead();
         }
         float hpPercent = (currentHp * 1.0f) / Hp;
-        
+
         anim.SetFloat("HpPercent", hpPercent);
         if (hpPercent < 0.5f && haveHead == true)
         {
@@ -119,8 +135,13 @@ public class Zombie : MonoBehaviour
     }
     private void Dead()
     {
+        if (zombieState == ZombieState.Die)
+        {
+            return;
+        }
         zombieState = ZombieState.Die;
         GetComponent<Collider2D>().enabled = false;
-        Destroy(this.gameObject,2.0f);
+        Destroy(this.gameObject, 2.0f);
+        ZombieManger.Instance.RemoveZombie(this);
     }
 }

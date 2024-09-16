@@ -64,6 +64,7 @@ public class HandManager : MonoBehaviour
         bool isSuccess =  cell.AddPlant(currentPlant);
         if (isSuccess)
         {
+            AudioManager.instance.PlayClip(Config.plant);
             currentPlant = null;
         }
 

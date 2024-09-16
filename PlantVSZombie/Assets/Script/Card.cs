@@ -114,6 +114,11 @@ public class Card : MonoBehaviour
 
     public void OnClick()
     {
+        AudioManager.instance.PlayClip(Config.btn_click);
+        if (cardState == CardState.Disable)
+        {
+            return;
+        }
         if (needSunPoint > SunManager.Instance.SunPoint)
         {
             return;

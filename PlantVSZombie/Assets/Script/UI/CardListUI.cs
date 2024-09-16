@@ -15,10 +15,10 @@ public class CardListUI : MonoBehaviour
     }
     public void ShowCardListUI()
     {
-        GetComponent<RectTransform>().DOLocalMoveY(461.5f, 1f);
+        GetComponent<RectTransform>().DOLocalMoveY(490f, 1f);
         EnableCardList();
     }
-    void DisableCardList()
+    public void DisableCardList()
     {
         foreach (var card in cardList)
         {

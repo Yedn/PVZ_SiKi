@@ -14,7 +14,6 @@ public class PrepareUI : MonoBehaviour
     {
         onComplete = OnComplete;
         anim.enabled = true;
-        
     }
     public void OnShowComplete()
     {
