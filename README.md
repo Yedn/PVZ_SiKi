@@ -8,7 +8,7 @@
 - (https://blog.csdn.net/weixin_49427945/article/details/139459771)[Unity中协程Coroutine简单易懂详解]
 
 ## TODO
-- 游戏失败UI的Animation
+- 已完结
 
 ## Git Learning Game
 - (https://learngitbranching.js.org/?locale=zh_CN)[Git使用学习]
